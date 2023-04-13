@@ -18,9 +18,10 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+
   String email1 = "barb@gmail.com";
   String password1 = "admin";
+  String password2 = "";
 
   void emailValidate() async {
     try {
