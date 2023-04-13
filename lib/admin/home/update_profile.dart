@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -13,12 +14,23 @@ class _AdminProfileScreenState extends State<AdminProfileScreen> {
   String _address = '123 Main St, Anytown USA';
   String _profileImageUrl = 'https://via.placeholder.com/150';
   final ImagePicker _picker = ImagePicker();
+  final _auth = FirebaseAuth.instance;
 
   Future<void> _pickImage(ImageSource source) async {
     final pickedFile = await _picker.pickImage(source: source);
     setState(() {
       _profileImageUrl = pickedFile as String;
     });
+  }
+  @override
+  void initState() {
+    super.initState();
+    // Get the current user's information from Firebase authentication
+    final currentUser = _auth.currentUser;
+    if (currentUser != null) {
+      _name = currentUser.displayName ?? '';
+      _email = currentUser.email ?? '';
+    }
   }
 
   @override

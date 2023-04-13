@@ -5,9 +5,11 @@ import 'package:barbar_app/admin/home/update_profile.dart';
 import 'package:barbar_app/screens/profile/profile_screen.dart';
 import 'package:barbar_app/screens/widgets/adminsupport.dart';
 import 'package:flutter/material.dart';
+import 'package:badges/badges.dart' as badges;
 
 import 'allshops.dart';
 import 'allusers.dart';
+import 'notifications.dart';
 
 class BarberAdminHomeScreen extends StatefulWidget {
   @override
@@ -89,6 +91,36 @@ class _BarberAdminHomeScreenState extends State<BarberAdminHomeScreen> {
                       }));
                     },
                   ),
+              InkWell(
+                onTap:() {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MessageScreen()),
+                  );
+
+                },
+                child: Card(
+                  elevation: 4.0,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      badges.Badge(
+                        badgeContent: Text('0',style: TextStyle(color: Colors.white),),badgeStyle: badges.BadgeStyle(badgeColor: Colors.black54),
+                        child: Icon(Icons.notification_important,size: 64,color: Colors.black54,
+                      ),),
+                      SizedBox(height: 8.0),
+                      Text(
+                        'notifications',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
                 ],
               ),
             ),

@@ -39,10 +39,11 @@ class _SignupScreenState extends State<SignupScreen> {
         );
 
         // Store user registration data in Firestore
-        FirebaseFirestore.instance.collection('users').doc(FirebaseAuth.instance.currentUser!.uid).set({
+        await FirebaseFirestore.instance.collection('users').doc(FirebaseAuth.instance.currentUser!.uid).set({
           'email': _emailController.text.trim(),
           'username': _usernameController.text.trim(),
           'userType': userType,
+          'message': userType == 'shop owner' ? 'New shop registered' : 'New customer registered',
           // Add any other registration data you want to store
         });
 
@@ -59,6 +60,7 @@ class _SignupScreenState extends State<SignupScreen> {
       );
     }
   }
+
 
   @override
   Widget build(BuildContext context) {

@@ -23,23 +23,7 @@ class ReminderScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16.0),
-            ReminderCard(
-              title: 'Haircut Reminder',
-              date: 'Friday, 8th April 2023',
-              time: '3:00 PM',
-            ),
-            const Divider(),
-            ReminderCard(
-              title: 'Beard Trim Reminder',
-              date: 'Saturday, 9th April 2023',
-              time: '1:00 PM',
-            ),
-            const Divider(),
-            ReminderCard(
-              title: 'Hair Dye Reminder',
-              date: 'Sunday, 10th April 2023',
-              time: '2:30 PM',
-            ),
+          
           ],
         ),
       ),

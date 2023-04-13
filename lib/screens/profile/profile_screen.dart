@@ -3,6 +3,7 @@ import 'package:barbar_app/screens/home/home.dart';
 import 'package:barbar_app/screens/login_screen.dart';
 
 import 'package:barbar_app/screens/profile/payment/payment_selection.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,9 +11,12 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../admin/home/add_shope.dart';
 import '../supportpage.dart';
-
+final User? user = FirebaseAuth.instance.currentUser;
 class ProfileScreen extends StatelessWidget {
   String _password = '';
+  String? username = user?.displayName;
+  String? email = user?.email;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,8 +54,8 @@ class ProfileScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 16.0),
-              const Text(
-                'Asad',
+               Text(
+               username?? '',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20.0,
@@ -59,7 +63,7 @@ class ProfileScreen extends StatelessWidget {
               ),
               const SizedBox(height: 8.0),
               Text(
-                'asad@gmail.com',
+                email ??'',
                 style: GoogleFonts.roboto(
                   color: Colors.grey[600],
                   fontSize: 16.0,

@@ -2,6 +2,7 @@ import 'package:barbar_app/model/styling_services.dart';
 import 'package:barbar_app/screens/home/shope_detail_page.dart';
 import 'package:barbar_app/screens/shopDetail.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,8 +12,9 @@ import '../../shopdetail.dart';
 import '../../test/membership.dart';
 import '../widgets/shopItem.dart';
 import '../widgets/styling_item.dart';
-
+final User? user = FirebaseAuth.instance.currentUser;
 class HomeScreen extends StatelessWidget {
+  String? username = user?.displayName;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,8 +26,8 @@ class HomeScreen extends StatelessWidget {
             children: [
               Row(children: [
                 Text(
-                  "hi,Asad",
-                  style: GoogleFonts.roboto(fontWeight: FontWeight.bold, fontSize: 25),
+                  username??"",
+                  style: GoogleFonts.roboto(fontWeight: FontWeight.bold, fontSize: 22),
                 ),
                 SizedBox(width: 70,),
                 ElevatedButton(
